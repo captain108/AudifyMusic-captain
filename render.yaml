@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: telegram-music-bot
+    env: docker
+    repo: https://github.com/yourusername/yourbotrepo
+    branch: main
+    dockerfilePath: Dockerfile
+    envVars:
+      - key: BOT_TOKEN
+        value: your_bot_token
+      - key: API_ID
+        value: your_api_id
+      - key: API_HASH
+        value: your_api_hash
+      - key: SESSION_STRING
+        value: your_session_string
+      - key: LOG_CHANNEL
+        value: -100xxxxxxxxx
+      - key: SUDO_USERS
+        value: 123456789 987654321
+      - key: DATABASE_URL
+        value: your_postgres_url_if_any
