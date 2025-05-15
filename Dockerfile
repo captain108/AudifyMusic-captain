@@ -1,12 +1,24 @@
-FROM nikolaik/python-nodejs:python3.10-nodejs19
+# Use an official Python image
+FROM python:3.11-slim
 
-RUN apt-get update \
-    && apt-get install -y --no-install-recommends ffmpeg \
-    && apt-get clean \
+# Install system dependencies
+RUN apt-get update && apt-get install -y \
+    ffmpeg \
+    git \
     && rm -rf /var/lib/apt/lists/*
 
-COPY . /app/
-WORKDIR /app/
-RUN pip3 install --no-cache-dir -U -r requirements.txt
+# Set work directory
+WORKDIR /app
 
-CMD bash start
+# Copy requirements and install
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy bot code
+COPY . .
+
+# Set environment variables (can also be set via Render dashboard)
+ENV PYTHONUNBUFFERED=1
+
+# Start the bot
+CMD ["python", "main.py"]
