@@ -2,7 +2,7 @@ services:
   - type: web
     name: telegram-music-bot
     env: docker
-    repo: https://github.com/yourusername/yourbotrepo
+    repo: https://github.com/captain108/AudifyMusic-captain/tree/main.git
     branch: main
     dockerfilePath: Dockerfile
     envVars:
