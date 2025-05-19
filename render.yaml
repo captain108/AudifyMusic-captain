@@ -1,22 +1,29 @@
 services:
   - type: web
-    name: telegram-music-bot
-    env: docker
-    repo: https://github.com/captain108/AudifyMusic-captain/tree/main.git
-    branch: main
-    dockerfilePath: Dockerfile
+    name: audifymusic
+    env: python
+    plan: free
+    region: oregon
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "bash start"
     envVars:
-      - key: BOT_TOKEN
-        value: your_bot_token
       - key: API_ID
-        value: your_api_id
+        value: 1234567
       - key: API_HASH
-        value: your_api_hash
-      - key: SESSION_STRING
-        value: your_session_string
-      - key: LOG_CHANNEL
-        value: -100xxxxxxxxx
-      - key: SUDO_USERS
-        value: 123456789 987654321
-      - key: DATABASE_URL
-        value: your_postgres_url_if_any
+        value: 0123456789abcdef0123456789abcdef
+      - key: BOT_TOKEN
+        value: 123456:ABC-DEF1234ghIkl-zyx57W2v1u123ew11
+      - key: MONGO_DB_URI
+        value: mongodb+srv://user:pass@cluster.mongodb.net/mydb
+      - key: SESSION_NAME
+        value: your_string_session
+      - key: LOG_GROUP_ID
+        value: -1001234567890
+      - key: MUSIC_BOT_NAME
+        value: CAPTAIN X MUSIC
+      - key: OWNER_ID
+        value: 123456789
+      - key: SUPPORT_CHANNEL
+        value: @
+      - key: SUPPORT_GROUP
+        value: @YourGroup
